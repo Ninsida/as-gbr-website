@@ -1,0 +1,41 @@
+/* ================================================
+   Ali Selmi Grundstücks eGbR – Stylesheet
+   Design: Elegant, minimal, white/gray/gold
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Raleway:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap');
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #333;
+  background: #fff;
+  line-height: 1.7;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ── Typography  ─ */
+h1, h2, h3, h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── Colors ── */
+:root {
+  --gold:      #8B7340;
+  --gold-lt:   #b39a60;
+  --gray-bg:   #f2f1ef;
+  --gray-mid:  #e8e7e5;
+  --gray-dark: #666;
+  --dark:      #1a1a1a;
+  --white:     #ffffff;
+}
