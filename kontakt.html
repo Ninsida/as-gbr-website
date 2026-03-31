@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Ali Selmi Grundstücks eGbR</title>
+  <meta name="description" content="Kontaktieren Sie die Ali Selmi Grundstücks eGbR in Frankfurt am Main. Persönliche Beratung zu Immobilien und Property Management.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Ali Selmi <span>Grundstücks eGbR</span></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="objekte.html">Objekte</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="objekte.html">Objekte</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Sprechen Sie uns an</p>
+      <h1>Kontakt</h1>
+      <p class="sub">Wir freuen uns auf Ihre Nachricht</p>
+    </div>
+  </div>
+
+  <!-- KONTAKT MAIN -->
+  <section class="section">
+    <div class="container">
+      <div class="kontakt-grid">
+
+        <!-- Info Left -->
+        <div class="reveal">
+          <p class="section-label">Erreichbarkeit</p>
+          <h2 class="section-title">So finden Sie uns</h2>
+          <div class="gold-line"></div>
+
+          <div class="kontakt-info-item">
+            <div class="kontakt-icon">📍</div>
+            <div>
+              <h4>Adresse</h4>
+              <p>Escherheimer Landstraße 60/62<br>60322 Frankfurt am Main</p>
+            </div>
+          </div>
+
+          <div class="kontakt-info-item">
+            <div class="kontakt-icon">📞</div>
+            <div>
+              <h4>Telefon</h4>
+              <a href="tel:+496915689400">069 / 15 68 94 – 0</a>
+            </div>
+          </div>
+
+          <div class="kontakt-info-item">
+            <div class="kontakt-icon">✉️</div>
+            <div>
+              <h4>E-Mail</h4>
+              <a href="mailto:info@as-gbr.de">info@as-gbr.de</a>
+            </div>
+          </div>
+
+          <div class="kontakt-info-item">
+            <div class="kontakt-icon">🕐</div>
+            <div>
+              <h4>Bürozeiten</h4>
+              <p>Mo – Fr: 9:00 – 17:00 Uhr</p>
+            </div>
+          </div>
+
+          <!-- Ansprechpartner -->
+          <div class="ansprechpartner-box reveal">
+            <h4>Ansprechpartner</h4>
+            <div class="asp-item">
+              <div>
+                <span class="asp-name">Amir Selmi</span><br>
+                <span class="asp-role">Geschäftsführer</span>
+              </div>
+              <a href="mailto:info@as-gbr.de" style="color:var(--gold); font-size:0.8rem;">info@as-gbr.de</a>
+            </div>
+            <div class="asp-item">
+              <div>
+                <span class="asp-name">Mark Brom</span><br>
+                <span class="asp-role">Technik</span>
+              </div>
+              <a href="mailto:brom@as-gbr.de" style="color:var(--gold); font-size:0.8rem;">brom@as-gbr.de</a>
+            </div>
+            <div class="asp-item">
+              <div>
+                <span class="asp-name">Hana Schilling</span><br>
+                <span class="asp-role">Property Management</span>
+              </div>
+              <a href="mailto:schilling@as-gbr.de" style="color:var(--gold); font-size:0.8rem;">schilling@as-gbr.de</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Right -->
+        <div class="reveal">
+          <p class="section-label">Schreiben Sie uns</p>
+          <h2 class="section-title">Kontaktformular</h2>
+          <div class="gold-line"></div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="vorname">Vorname *</label>
+                <input type="text" id="vorname" name="vorname" placeholder="Max" required>
+              </div>
+              <div class="form-group">
+                <label for="nachname">Nachname *</label>
+                <input type="text" id="nachname" name="nachname" placeholder="Mustermann" required>
+              </div>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+              </div>
+              <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" placeholder="069 / ...">
+              </div>
+              <div class="form-group full">
+                <label for="betreff">Betreff</label>
+                <select id="betreff" name="betreff">
+                  <option value="">Bitte wählen …</option>
+                  <option value="vermietung">Vermietungsanfrage</option>
+                  <option value="verwaltung">Property Management</option>
+                  <option value="technik">Technik & Instandhaltung</option>
+                  <option value="beratung">Beratungsgespräch</option>
+                  <option value="sonstiges">Sonstiges</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="nachricht">Nachricht *</label>
+                <textarea id="nachricht" name="nachricht" placeholder="Ihre Nachricht an uns …" required></textarea>
+              </div>
+              <label class="checkbox-group">
+                <input type="checkbox" id="datenschutz" name="datenschutz" required>
+                Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten gemäß Art. 6 Abs. 1 lit. b DSGVO zu. *
+              </label>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <button type="submit" class="btn-gold">Nachricht absenden</button>
+            </div>
+            <div class="form-success" id="formSuccess">
+              ✓ Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Google Maps -->
+      <div class="map-wrapper reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.4827!2d8.6801!3d50.1375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd0f5a28f02827%3A0x35f45d06c3c4b37!2sEscherheimer%20Landstra%C3%9Fe%2060%2C%2060322%20Frankfurt%20am%20Main!5e0!3m2!1sde!2sde!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Standort Ali Selmi Grundstücks eGbR">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Ali Selmi Grundstücks eGbR</div>
+          <p class="footer-tagline">Verantwortungsvolles Immobilienmanagement im Herzen von Frankfurt am Main.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Navigation</p>
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="objekte.html">Objekte</a></li>
+            <li><a href="ueber-uns.html">Über uns</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-heading">Kontakt</p>
+          <a href="https://maps.google.com/?q=Escherheimer+Landstrasse+60+Frankfurt" target="_blank">📍 Escherheimer Landstraße 60/62<br>&nbsp;&nbsp;&nbsp;&nbsp;60322 Frankfurt am Main</a>
+          <a href="tel:+496915689400">📞 069 / 15 68 94 – 0</a>
+          <a href="mailto:info@as-gbr.de">✉️ info@as-gbr.de</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Ali Selmi Grundstücks eGbR</span>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+
+    // Form validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const vorname   = document.getElementById('vorname').value.trim();
+      const nachname  = document.getElementById('nachname').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const nachricht = document.getElementById('nachricht').value.trim();
+      const dsgvo     = document.getElementById('datenschutz').checked;
+
+      if (!vorname || !nachname || !email || !nachricht || !dsgvo) {
+        alert('Bitte füllen Sie alle Pflichtfelder aus und stimmen Sie der Datenschutzerklärung zu.');
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        return;
+      }
+      this.reset();
+      document.getElementById('formSuccess').classList.add('show');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
