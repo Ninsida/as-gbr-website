@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
   <!-- HEADER -->
   <header id="header">
     <div class="header-inner">
@@ -34,7 +34,7 @@
       </ul>
     </div>
   </header>
- 
+
   <!-- HERO SLIDER -->
   <section class="hero">
     <div class="slider" id="heroSlider">
@@ -63,7 +63,7 @@
       <div class="arrow"></div>
     </div>
   </section>
- 
+
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="container">
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- INTRO -->
   <section class="section">
     <div class="container">
@@ -104,7 +104,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- LEISTUNGEN -->
   <section class="section section--gray">
     <div class="container">
@@ -137,7 +137,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- OBJEKTE PREVIEW -->
   <section class="section">
     <div class="container">
@@ -151,15 +151,15 @@
       </div>
       <div class="objekte-grid">
         <div class="objekt-card reveal">
-          <div class="objekt-img">
-            <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=700&q=80" alt="Escherheimer Landstraße" loading="lazy">
-            <span class="objekt-badge badge-vermietet">Vermietet</span>
+          <div class="placeholder-img">
+            <span>🏗️</span>
+            <p>Foto folgt</p>
           </div>
           <div class="objekt-info">
-            <h3>Escherheimer Landstraße 60/62</h3>
-            <p class="objekt-type">Frankfurt Nordend · Mehrfamilienhaus</p>
+            <h3>Objekt in Vorbereitung</h3>
+            <p class="objekt-type">Frankfurt · Details folgen</p>
             <div class="objekt-meta">
-              <span>📍 60322 Frankfurt</span>
+              <span>📍 Frankfurt am Main</span>
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- QUOTE + PORTRAIT -->
   <section class="quote-section">
     <div class="container">
@@ -200,7 +200,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -234,14 +234,14 @@
       </div>
     </div>
   </footer>
- 
+
   <script>
     // Image slider
     const slides = document.querySelectorAll('.slide');
     const dots   = document.querySelectorAll('.dot');
     let current  = 0;
     let timer;
- 
+
     function goTo(n) {
       slides[current].classList.remove('active');
       dots[current].classList.remove('active');
@@ -249,24 +249,24 @@
       slides[current].classList.add('active');
       dots[current].classList.add('active');
     }
- 
+
     function next() { goTo(current + 1); }
- 
+
     function startTimer() { timer = setInterval(next, 5000); }
     function resetTimer()  { clearInterval(timer); startTimer(); }
- 
+
     dots.forEach(dot => {
       dot.addEventListener('click', () => { goTo(+dot.dataset.index); resetTimer(); });
     });
- 
+
     startTimer();
- 
+
     // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
     });
- 
+
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
@@ -274,7 +274,7 @@
       hamburger.classList.toggle('open');
       mobileNav.classList.toggle('open');
     });
- 
+
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
