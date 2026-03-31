@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
   <!-- HEADER -->
   <header id="header">
     <div class="header-inner">
@@ -34,10 +34,14 @@
       </ul>
     </div>
   </header>
-
-  <!-- HERO -->
+ 
+  <!-- HERO SLIDER -->
   <section class="hero">
-    <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="slider" id="heroSlider">
+      <div class="slide active" style="background-image: url('https://static.wixstatic.com/media/ea6177_84c72652aac54a4dbbdc26fe6b9f0b4d~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/img.jpg');"></div>
+      <div class="slide" style="background-image: url('https://static.wixstatic.com/media/ea6177_5e6ada2e78fa404899b08d84d629c96c~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/img.jpg');"></div>
+      <div class="slide" style="background-image: url('https://static.wixstatic.com/media/ea6177_7137c5e9689e45f9ac53c4a91408ff13~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/img.jpg');"></div>
+    </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Frankfurt am Main · Seit 1999</p>
@@ -48,12 +52,18 @@
         <a href="kontakt.html" class="btn-outline btn-outline--white">Kontakt aufnehmen</a>
       </div>
     </div>
+    <!-- Slider dots -->
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot active" data-index="0" aria-label="Bild 1"></button>
+      <button class="dot" data-index="1" aria-label="Bild 2"></button>
+      <button class="dot" data-index="2" aria-label="Bild 3"></button>
+    </div>
     <div class="scroll-indicator">
       <span>Mehr erfahren</span>
       <div class="arrow"></div>
     </div>
   </section>
-
+ 
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="container">
@@ -75,7 +85,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- INTRO -->
   <section class="section">
     <div class="container">
@@ -94,7 +104,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- LEISTUNGEN -->
   <section class="section section--gray">
     <div class="container">
@@ -127,7 +137,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- OBJEKTE PREVIEW -->
   <section class="section">
     <div class="container">
@@ -169,15 +179,28 @@
       </div>
     </div>
   </section>
-
-  <!-- QUOTE -->
+ 
+  <!-- QUOTE + PORTRAIT -->
   <section class="quote-section">
     <div class="container">
-      <p class="quote-text reveal">Wer in einer Stadt baut, der muss sich dieser Stadt auch verpflichtet fühlen, da jedes Haus das Gesicht unserer Gemeinschaft mitprägt.</p>
-      <p class="quote-author reveal">— Ali Selmi, Gründer</p>
+      <div class="quote-inner reveal">
+        <div class="quote-portrait-wrap">
+          <img
+            src="https://static.wixstatic.com/media/ea6177_38fe475d6d7b40c1816081cf78231e36~mv2.png/v1/fill/w_242,h_331,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/AS_scan_bearbeitet_s.png"
+            alt="Ali Selmi – Gründer"
+            class="quote-portrait"
+          >
+          <div class="quote-portrait-label">Ali Selmi</div>
+        </div>
+        <div class="quote-body">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">Wer in einer Stadt baut, der muss sich dieser Stadt auch verpflichtet fühlen, da jedes Haus das Gesicht der Stadt mitprägt.</p>
+          <p class="quote-author">— Ali Selmi, Gründer</p>
+        </div>
+      </div>
     </div>
   </section>
-
+ 
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -211,14 +234,39 @@
       </div>
     </div>
   </footer>
-
+ 
   <script>
+    // Image slider
+    const slides = document.querySelectorAll('.slide');
+    const dots   = document.querySelectorAll('.dot');
+    let current  = 0;
+    let timer;
+ 
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+ 
+    function next() { goTo(current + 1); }
+ 
+    function startTimer() { timer = setInterval(next, 5000); }
+    function resetTimer()  { clearInterval(timer); startTimer(); }
+ 
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => { goTo(+dot.dataset.index); resetTimer(); });
+    });
+ 
+    startTimer();
+ 
     // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
     });
-
+ 
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
@@ -226,7 +274,7 @@
       hamburger.classList.toggle('open');
       mobileNav.classList.toggle('open');
     });
-
+ 
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
