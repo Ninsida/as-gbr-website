@@ -122,33 +122,38 @@
           <h2 class="section-title">Kontaktformular</h2>
           <div class="gold-line"></div>
 
-          <div data-fs-success style="display:none;" class="form-success">
-            ✓ Vielen Dank! Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.
+          <!-- Erfolg -->
+          <div id="formSuccess" style="display:none; background:#f0f7ee; border:1px solid #c3dabb; border-left:3px solid #5a9c6b; padding:1.5rem; border-radius:2px; margin-bottom:1rem;">
+            <p style="font-size:1.05rem; font-weight:700; color:#2d6b3e; margin-bottom:0.4rem;">✓ Nachricht erfolgreich gesendet!</p>
+            <p style="font-size:0.88rem; color:#2d6b3e; margin:0;">Vielen Dank! Wir melden uns in Kürze bei Ihnen.</p>
           </div>
-          <div data-fs-error style="display:none;" class="form-error">
-            ✕ Es gab ein Problem beim Senden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:info@as-gbr.de">info@as-gbr.de</a>.
+
+          <!-- Fehler (Netzwerk) -->
+          <div id="formNetError" style="display:none; background:#fdf0f0; border:1px solid #e8c3c3; border-left:3px solid #c0392b; padding:1.25rem; border-radius:2px; margin-bottom:1rem; font-size:0.88rem; color:#c0392b;">
+            ✕ Es gab ein technisches Problem. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:info@as-gbr.de" style="color:#c0392b;">info@as-gbr.de</a>.
           </div>
 
           <form id="contactForm" novalidate>
             <div class="form-grid">
               <div class="form-group">
                 <label for="vorname">Vorname *</label>
-                <input type="text" id="vorname" name="vorname" placeholder="Max" required data-fs-field>
-                <span data-fs-error="vorname" style="color:#c0392b; font-size:0.8rem;"></span>
+                <input type="text" id="vorname" name="vorname" placeholder="Max">
+                <span class="field-error" id="err-vorname">Bitte Vorname eingeben.</span>
               </div>
               <div class="form-group">
                 <label for="nachname">Nachname *</label>
-                <input type="text" id="nachname" name="nachname" placeholder="Mustermann" required data-fs-field>
-                <span data-fs-error="nachname" style="color:#c0392b; font-size:0.8rem;"></span>
+                <input type="text" id="nachname" name="nachname" placeholder="Mustermann">
+                <span class="field-error" id="err-nachname">Bitte Nachname eingeben.</span>
               </div>
               <div class="form-group">
                 <label for="email">E-Mail *</label>
-                <input type="email" id="email" name="email" placeholder="max@beispiel.de" required data-fs-field>
-                <span data-fs-error="email" style="color:#c0392b; font-size:0.8rem;"></span>
+                <input type="email" id="email" name="email" placeholder="max@beispiel.de">
+                <span class="field-error" id="err-email">Bitte gültige E-Mail-Adresse eingeben.</span>
               </div>
               <div class="form-group">
-                <label for="telefon">Telefon</label>
+                <label for="telefon">Telefon *</label>
                 <input type="tel" id="telefon" name="telefon" placeholder="069 / ...">
+                <span class="field-error" id="err-telefon">Bitte Telefonnummer eingeben.</span>
               </div>
               <div class="form-group full">
                 <label for="betreff">Betreff</label>
@@ -163,24 +168,121 @@
               </div>
               <div class="form-group full">
                 <label for="nachricht">Nachricht *</label>
-                <textarea id="nachricht" name="nachricht" placeholder="Ihre Nachricht an uns …" required data-fs-field></textarea>
-                <span data-fs-error="nachricht" style="color:#c0392b; font-size:0.8rem;"></span>
+                <textarea id="nachricht" name="nachricht" placeholder="Ihre Nachricht an uns …"></textarea>
+                <span class="field-error" id="err-nachricht">Bitte eine Nachricht eingeben.</span>
               </div>
-              <label class="checkbox-group">
-                <input type="checkbox" id="datenschutz" name="datenschutz" required>
-                Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten gemäß Art. 6 Abs. 1 lit. b DSGVO zu. *
-              </label>
+              <div class="full" id="dsgvo-wrap">
+                <label class="checkbox-group">
+                  <input type="checkbox" id="datenschutz" name="datenschutz">
+                  Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten gemäß Art. 6 Abs. 1 lit. b DSGVO zu. *
+                </label>
+                <span class="field-error" id="err-datenschutz" style="display:none; margin-top:0.4rem;">Bitte Datenschutzerklärung bestätigen.</span>
+              </div>
             </div>
             <div style="margin-top: 1.5rem;">
-              <button type="submit" class="btn-gold" data-fs-submit-btn>Nachricht absenden</button>
+              <button type="submit" class="btn-gold" id="submitBtn">Nachricht absenden</button>
             </div>
           </form>
 
+          <style>
+            .field-error {
+              display: none;
+              color: #c0392b;
+              font-size: 0.78rem;
+              margin-top: 0.3rem;
+              font-family: 'Raleway', sans-serif;
+            }
+            .field-error.show { display: block; }
+            .form-group input.invalid,
+            .form-group textarea.invalid,
+            .form-group select.invalid {
+              border-color: #c0392b;
+              box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+            }
+            #dsgvo-wrap.invalid .checkbox-group {
+              color: #c0392b;
+            }
+          </style>
+
           <script>
-            window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-            formspree('initForm', { formElement: '#contactForm', formId: 'mjgprjen' });
+            const form       = document.getElementById('contactForm');
+            const submitBtn  = document.getElementById('submitBtn');
+            const successBox = document.getElementById('formSuccess');
+            const netErrBox  = document.getElementById('formNetError');
+
+            function validate() {
+              let ok = true;
+
+              function check(id, errId, testFn) {
+                const el  = document.getElementById(id);
+                const err = document.getElementById(errId);
+                if (!testFn(el)) {
+                  el.classList.add('invalid');
+                  err.classList.add('show');
+                  ok = false;
+                } else {
+                  el.classList.remove('invalid');
+                  err.classList.remove('show');
+                }
+              }
+
+              check('vorname',  'err-vorname',  el => el.value.trim() !== '');
+              check('nachname', 'err-nachname', el => el.value.trim() !== '');
+              check('email',    'err-email',    el => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+              check('telefon',  'err-telefon',  el => el.value.trim() !== '');
+              check('nachricht','err-nachricht',el => el.value.trim() !== '');
+
+              // Datenschutz-Checkbox
+              const cb    = document.getElementById('datenschutz');
+              const cbErr = document.getElementById('err-datenschutz');
+              const wrap  = document.getElementById('dsgvo-wrap');
+              if (!cb.checked) {
+                wrap.classList.add('invalid');
+                cbErr.style.display = 'block';
+                ok = false;
+              } else {
+                wrap.classList.remove('invalid');
+                cbErr.style.display = 'none';
+              }
+
+              return ok;
+            }
+
+            // Live-Feedback: Fehler sofort wegräumen wenn korrigiert
+            ['vorname','nachname','email','telefon','nachricht'].forEach(id => {
+              document.getElementById(id).addEventListener('input', () => validate());
+            });
+            document.getElementById('datenschutz').addEventListener('change', () => validate());
+
+            form.addEventListener('submit', async function(e) {
+              e.preventDefault();
+              netErrBox.style.display = 'none';
+
+              if (!validate()) return;
+
+              submitBtn.textContent = 'Wird gesendet …';
+              submitBtn.disabled = true;
+
+              try {
+                const res = await fetch('https://formspree.io/f/mjgprjen', {
+                  method: 'POST',
+                  body: new FormData(form),
+                  headers: { 'Accept': 'application/json' }
+                });
+
+                if (res.ok) {
+                  form.style.display = 'none';
+                  successBox.style.display = 'block';
+                } else {
+                  throw new Error();
+                }
+              } catch {
+                netErrBox.style.display = 'block';
+                submitBtn.textContent = 'Nachricht absenden';
+                submitBtn.disabled = false;
+              }
+            });
           </script>
-          <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
         </div>
 
       </div>
